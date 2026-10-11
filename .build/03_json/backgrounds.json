@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Acolyte",
+    "page": 83,
+    "ability_scores": [
+      "Intelligence",
+      "Wisdom",
+      "Charisma"
+    ],
+    "feat": "Magic Initiate (Cleric)",
+    "skill_proficiencies": [
+      "Insight",
+      "Religion"
+    ],
+    "tool_proficiency": "Calligrapher's Supplies",
+    "equipment": "_Choose A or B:_ (A) Calligrapher's Supplies, Book (prayers), Holy Symbol, Parchment (10 sheets),",
+    "fields": {
+      "Ability Scores": "Intelligence, Wisdom, Charisma",
+      "Feat": "Magic Initiate (Cleric) (see \"Feats\")",
+      "Skill Proficiencies": "Insight and Religion",
+      "Tool Proficiency": "Calligrapher's Supplies",
+      "Equipment": "_Choose A or B:_ (A) Calligrapher's Supplies, Book (prayers), Holy Symbol, Parchment (10 sheets),"
+    },
+    "description": "- Robe, 8 GP; or (B) 50 GP"
+  },
+  {
+    "name": "Criminal",
+    "page": 83,
+    "ability_scores": [
+      "Dexterity",
+      "Constitution",
+      "Intelligence"
+    ],
+    "feat": "Alert",
+    "skill_proficiencies": [
+      "Sleight of Hand",
+      "Stealth"
+    ],
+    "tool_proficiency": "Thieves' Tools",
+    "equipment": "_Choose A or B:_ (A) 2 Daggers, Thieves' Tools, Crowbar, 2 Pouches, Traveler's Clothes,",
+    "fields": {
+      "Ability Scores": "Dexterity, Constitution, Intelligence",
+      "Feat": "Alert (see \"Feats\")",
+      "Skill Proficiencies": "Sleight of Hand and Stealth",
+      "Tool Proficiency": "Thieves' Tools",
+      "Equipment": "_Choose A or B:_ (A) 2 Daggers, Thieves' Tools, Crowbar, 2 Pouches, Traveler's Clothes,"
+    },
+    "description": "- 16 GP; or (B) 50 GP"
+  },
+  {
+    "name": "Sage",
+    "page": 83,
+    "ability_scores": [
+      "Constitution",
+      "Intelligence",
+      "Wisdom"
+    ],
+    "feat": "Magic Initiate (Wizard)",
+    "skill_proficiencies": [
+      "Arcana",
+      "History"
+    ],
+    "tool_proficiency": "Calligrapher's Supplies",
+    "equipment": "_Choose A or B:_ (A) Quarterstaff, Calligrapher's Supplies, Book (history), Parchment (8",
+    "fields": {
+      "Ability Scores": "Constitution, Intelligence, Wisdom",
+      "Feat": "Magic Initiate (Wizard) (see \"Feats\")",
+      "Skill Proficiencies": "Arcana and History",
+      "Tool Proficiency": "Calligrapher's Supplies",
+      "Equipment": "_Choose A or B:_ (A) Quarterstaff, Calligrapher's Supplies, Book (history), Parchment (8"
+    },
+    "description": "- sheets), Robe, 8 GP; or (B) 50 GP"
+  },
+  {
+    "name": "Soldier",
+    "page": 83,
+    "ability_scores": [
+      "Strength",
+      "Dexterity",
+      "Constitution"
+    ],
+    "feat": "Savage Attacker",
+    "skill_proficiencies": [
+      "Athletics",
+      "Intimidation"
+    ],
+    "tool_proficiency": "_Choose one kind of Gaming Set_ (see",
+    "equipment": "_Choose A or B:_ (A) Spear, Shortbow, 20 Arrows, Gaming Set (same as above), Healer's Kit, Quiver, Traveler's Clothes, 14 GP; or (B) 50 GP",
+    "fields": {
+      "Ability Scores": "Strength, Dexterity, Constitution",
+      "Feat": "Savage Attacker (see \"Feats\")",
+      "Skill Proficiencies": "Athletics and Intimidation",
+      "Tool Proficiency": "_Choose one kind of Gaming Set_ (see",
+      "Equipment": "_Choose A or B:_ (A) Spear, Shortbow, 20 Arrows, Gaming Set (same as above), Healer's Kit, Quiver, Traveler's Clothes, 14 GP; or (B) 50 GP"
+    },
+    "description": "- \"Equipment\")"
+  }
+]

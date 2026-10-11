@@ -1,0 +1,318 @@
+{
+  "name": "SRD 5.2.1 (2024)",
+  "id": "srd-5-2-1-2024",
+  "blocks": [
+    {
+      "type": "inline",
+      "id": "srd521000001",
+      "properties": [],
+      "hasRule": true,
+      "nested": [
+        {
+          "type": "group",
+          "id": "srd521000002",
+          "properties": [
+            "name",
+            "type_line"
+          ],
+          "conditioned": true,
+          "nested": [
+            {
+              "type": "inline",
+              "id": "srd521000003",
+              "properties": [],
+              "hasRule": false,
+              "nested": [
+                {
+                  "type": "heading",
+                  "id": "srd521000004",
+                  "properties": [
+                    "name"
+                  ],
+                  "conditioned": true,
+                  "size": 1
+                },
+                {
+                  "type": "inline",
+                  "id": "srd521000005",
+                  "properties": [],
+                  "hasRule": false,
+                  "nested": [
+                    {
+                      "type": "action",
+                      "id": "srd521000006",
+                      "icon": "sword",
+                      "callback": "try { InitiativeTracker.newEncounter({roll: true, creatures: [monster]}); } catch(e) {}"
+                    },
+                    {
+                      "type": "action",
+                      "id": "srd521000007",
+                      "icon": "plus-with-circle",
+                      "callback": "try { InitiativeTracker.addCreatures([monster]); } catch(e) {}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "subheading",
+              "id": "srd521000008",
+              "properties": [
+                "type_line"
+              ],
+              "conditioned": true,
+              "separator": ", "
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "id": "srd521000009",
+          "properties": [
+            "image"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "srd52100000a",
+      "properties": [
+        "ac",
+        "hp",
+        "speed"
+      ],
+      "hasRule": true,
+      "conditioned": true,
+      "nested": [
+        {
+          "type": "inline",
+          "id": "srd52100000b",
+          "properties": [],
+          "hasRule": false,
+          "nested": [
+            {
+              "type": "property",
+              "id": "srd52100000c",
+              "properties": [
+                "ac"
+              ],
+              "display": "AC",
+              "conditioned": true
+            },
+            {
+              "type": "property",
+              "id": "srd52100000d",
+              "properties": [
+                "initiative_line"
+              ],
+              "display": "Initiative",
+              "conditioned": true
+            }
+          ]
+        },
+        {
+          "type": "property",
+          "id": "srd52100000e",
+          "properties": [
+            "hp"
+          ],
+          "display": "HP",
+          "conditioned": true,
+          "dice": true,
+          "diceProperty": "hit_dice",
+          "diceCallback": "if (\"hit_dice\" in monster) {\n  return [{ text: monster[\"hit_dice\"] }];\n} else {\n  return property;\n}",
+          "callback": "let str = [monster.hp];\nif (monster.hit_dice?.length) {\n  str.push(`(${monster.hit_dice})`);\n}\nreturn str.join(\" \");"
+        },
+        {
+          "type": "property",
+          "id": "srd52100000f",
+          "properties": [
+            "speed"
+          ],
+          "display": "Speed",
+          "conditioned": true
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "srd521000010",
+      "properties": [
+        "stats"
+      ],
+      "hasRule": true,
+      "conditioned": true,
+      "nested": [
+        {
+          "type": "javascript",
+          "id": "srd521000011",
+          "conditioned": false,
+          "code": "const labels = [\"Str\", \"Dex\", \"Con\", \"Int\", \"Wis\", \"Cha\"];\nconst stats = Array.isArray(monster.stats) ? monster.stats : [];\nconst mods = Array.isArray(monster.ability_mods) ? monster.ability_mods\n    : stats.map((s) => Math.floor((Number(s) - 10) / 2));\nconst saves = Array.isArray(monster.ability_saves) ? monster.ability_saves : mods;\nconst fmt = (n) => typeof n === \"string\" ? n : (n === null || n === undefined || isNaN(Number(n))) ? \"—\"\n    : (Number(n) >= 0 ? \"+\" + Number(n) : \"−\" + Math.abs(Number(n)));\nconst wrap = document.createElement(\"div\");\nwrap.classList.add(\"srd521-abilities\");\nwrap.style.cssText = \"display:grid;grid-template-columns:repeat(3,1fr);column-gap:0.75em;margin:0.25em 0;\";\nfor (const col of [0, 1, 2]) {\n    const table = document.createElement(\"table\");\n    table.style.cssText = \"width:100%;border-collapse:collapse;margin:0;\";\n    const head = table.insertRow();\n    for (const h of [\"\", \"\", \"MOD\", \"SAVE\"]) {\n        const th = document.createElement(\"th\");\n        th.textContent = h;\n        th.style.cssText = \"font-size:0.65em;font-weight:normal;opacity:0.7;text-align:center;padding:0 0.2em;border:none;background:none;\";\n        head.appendChild(th);\n    }\n    for (const i of [col, col + 3]) {\n        const row = table.insertRow();\n        const values = [labels[i], stats[i] ?? \"—\", fmt(mods[i]), fmt(saves[i])];\n        values.forEach((v, k) => {\n            const td = row.insertCell();\n            td.textContent = String(v);\n            td.style.cssText = \"padding:0.1em 0.2em;border:none;background:none;text-align:\" +\n                (k === 0 ? \"left;font-weight:bold;\" : \"center;\");\n        });\n    }\n    wrap.appendChild(table);\n}\nreturn wrap;"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "srd521000012",
+      "hasRule": true,
+      "conditioned": true,
+      "properties": [
+        "skills_text",
+        "vulnerabilities",
+        "resistances",
+        "immunities",
+        "gear",
+        "senses",
+        "languages",
+        "cr_line"
+      ],
+      "nested": [
+        {
+          "type": "property",
+          "id": "srd521000013",
+          "properties": [
+            "skills_text"
+          ],
+          "display": "Skills",
+          "conditioned": true
+        },
+        {
+          "type": "property",
+          "id": "srd521000014",
+          "properties": [
+            "vulnerabilities"
+          ],
+          "display": "Vulnerabilities",
+          "conditioned": true
+        },
+        {
+          "type": "property",
+          "id": "srd521000015",
+          "properties": [
+            "resistances"
+          ],
+          "display": "Resistances",
+          "conditioned": true
+        },
+        {
+          "type": "property",
+          "id": "srd521000016",
+          "properties": [
+            "immunities"
+          ],
+          "display": "Immunities",
+          "conditioned": true
+        },
+        {
+          "type": "property",
+          "id": "srd521000017",
+          "properties": [
+            "gear"
+          ],
+          "display": "Gear",
+          "conditioned": true
+        },
+        {
+          "type": "property",
+          "id": "srd521000018",
+          "properties": [
+            "senses"
+          ],
+          "display": "Senses",
+          "conditioned": true
+        },
+        {
+          "type": "property",
+          "id": "srd521000019",
+          "properties": [
+            "languages"
+          ],
+          "display": "Languages",
+          "conditioned": true,
+          "fallback": "None"
+        },
+        {
+          "type": "property",
+          "id": "srd52100001a",
+          "properties": [
+            "cr_line"
+          ],
+          "display": "CR",
+          "conditioned": true
+        }
+      ]
+    },
+    {
+      "type": "traits",
+      "id": "srd52100001b",
+      "properties": [
+        "traits"
+      ],
+      "heading": "Traits",
+      "conditioned": true,
+      "dice": true
+    },
+    {
+      "type": "traits",
+      "id": "srd52100001c",
+      "properties": [
+        "actions"
+      ],
+      "heading": "Actions",
+      "conditioned": true,
+      "dice": true
+    },
+    {
+      "type": "traits",
+      "id": "srd52100001d",
+      "properties": [
+        "bonus_actions"
+      ],
+      "heading": "Bonus Actions",
+      "conditioned": true,
+      "dice": true
+    },
+    {
+      "type": "traits",
+      "id": "srd52100001e",
+      "properties": [
+        "reactions"
+      ],
+      "heading": "Reactions",
+      "conditioned": true,
+      "dice": true
+    },
+    {
+      "type": "group",
+      "id": "srd52100001f",
+      "properties": [
+        "legendary_description",
+        "legendary_actions"
+      ],
+      "heading": "Legendary Actions",
+      "conditioned": true,
+      "nested": [
+        {
+          "type": "text",
+          "id": "srd521000020",
+          "properties": [
+            "legendary_description"
+          ],
+          "conditioned": true,
+          "text": null
+        },
+        {
+          "type": "traits",
+          "id": "srd521000021",
+          "properties": [
+            "legendary_actions"
+          ],
+          "conditioned": true,
+          "dice": true
+        }
+      ]
+    }
+  ],
+  "diceParsing": []
+}

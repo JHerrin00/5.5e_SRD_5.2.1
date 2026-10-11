@@ -1,0 +1,88 @@
+---
+statblock: inline
+source: SRD 5.2.1
+cr: '24'
+xp: 62000
+type: Dragon
+initiative_text: +14 (24)
+tags:
+- srd521/monster
+- srd521/type/dragon
+xp_lair: 75000
+---
+
+```statblock
+layout: Basic 5e Layout
+name: Ancient Red Dragon
+source: SRD 5.2.1
+type_line: Gargantuan Dragon (Chromatic), Chaotic Evil
+initiative_line: +14 (24)
+modifier: 14
+ability_mods:
+- 10
+- 0
+- 9
+- 4
+- 2
+- 8
+ability_saves:
+- 10
+- 7
+- 9
+- 4
+- 9
+- 8
+skills_text: Perception +16, Stealth +7
+immunities: Fire
+cr_line: 24 (XP 62,000, or 75,000 in lair; PB +7)
+xp: 62000
+size: Gargantuan
+type: Dragon
+subtype: Chromatic
+alignment: Chaotic Evil
+ac: 22
+hp: 507
+hit_dice: 26d20 + 234
+speed: 40 ft., Climb 40 ft., Fly 80 ft.
+stats:
+- 30
+- 10
+- 29
+- 18
+- 15
+- 27
+saves:
+- dexterity: 7
+- wisdom: 9
+skillsaves:
+- perception: 16
+- stealth: 7
+damage_immunities: Fire
+senses: Blindsight 60 ft., Darkvision 120 ft.; Passive Perception 26
+languages: Common, Draconic
+cr: '24'
+dice: false
+traits:
+- name: Legendary Resistance (4/Day, or 5/Day in Lair)
+  desc: If the dragon fails a saving throw, it can choose to succeed instead.
+actions:
+- name: Multiattack
+  desc: The dragon makes three Rend attacks. It can replace one attack with a use of Spellcasting to cast _Scorching Ray_ (level 3 version).
+- name: Rend
+  desc: _Melee Attack Roll:_ +17, reach 15 ft. _Hit:_ 19 (2d8 + 10) Slashing damage plus 10 (3d6) Fire damage.
+- name: Fire Breath (Recharge 5–6)
+  desc: _Dexterity Saving Throw:_ DC 24, each creature in a 90-foot Cone. _Failure:_ 91 (26d6) Fire damage. _Success:_ Half damage.
+- name: Spellcasting
+  desc: |-
+    The dragon casts one of the following spells, requiring no Material components and using Charisma as the spellcasting ability (spell save DC 23, +15 to hit with spell attacks):
+    **At Will:** _Command_ (level 2 version), _Detect Magic_, _Scorching Ray_ (level 3 version)
+    **1/Day Each:** _Fireball_ (level 6 version), _Scrying_
+legendary_description: 'Legendary Action Uses: 3 (4 in Lair). Immediately after another creature''s turn, the dragon can expend a use to take one of the following actions. The dragon regains all expended uses at the start of each of its turns.'
+legendary_actions:
+- name: Commanding Presence
+  desc: The dragon uses Spellcasting to cast _Command_ (level 2 version). The dragon can't take this action again until the start of its next turn.
+- name: Fiery Rays
+  desc: The dragon uses Spellcasting to cast _Scorching Ray_ (level 3 version). The dragon can't take this action again until the start of its next turn.
+- name: Pounce
+  desc: The dragon moves up to half its Speed, and it makes one Rend attack.
+```

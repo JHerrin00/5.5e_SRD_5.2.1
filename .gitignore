@@ -1,0 +1,10 @@
+# Private build tools
+tools/
+
+# Python virtual environment
+.venv/
+
+# Source PDF (download it from https://www.dndbeyond.com/srd)
+*.pdf
+
+.DS_Store
